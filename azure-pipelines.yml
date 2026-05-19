@@ -1,12 +1,8 @@
 trigger:
   branches:
     include:
-      - dev
+      - Dev
 
-pr:
-  branches:
-    include:
-      - dev
 
 pool:
   vmImage: ubuntu-latest
@@ -43,7 +39,6 @@ steps:
 
 - task: TerraformTaskV4@4
   displayName: Terraform Apply
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/dev'))
   inputs:
     provider: 'azurerm'
     command: 'apply'
